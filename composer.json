@@ -1,0 +1,62 @@
+{
+    "name": "danielm/laravel-simple-audit",
+    "description": "Scalable, queueable audit event logging for Laravel apps, with a fluent builder API.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "audit", "audit-log", "activity-log", "events"],
+    "authors": [
+        {
+            "name": "Daniel Morales",
+            "email": "daniminas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.4|^13.0",
+        "illuminate/database": "^12.4|^13.0",
+        "illuminate/queue": "^12.4|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.18",
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "suggest": {
+        "laravel/boost": "Lets AI coding agents pick up this package's AI guidelines and skill automatically (see resources/boost/)."
+    },
+    "autoload": {
+        "psr-4": {
+            "Danielm\\LaravelSimpleAudit\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Danielm\\LaravelSimpleAudit\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Danielm\\LaravelSimpleAudit\\LaravelSimpleAuditServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/pint",
+        "format:test": "vendor/bin/pint --test",
+        "analyse": "vendor/bin/phpstan analyse"
+    }
+}
