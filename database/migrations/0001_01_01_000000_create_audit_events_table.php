@@ -21,9 +21,20 @@ return new class extends Migration
             // doesn't know about them.
             $t->string('type', 64);
 
-            $t->nullableMorphs('actor');     // who did it
-            $t->nullableMorphs('subject');   // what it happened to
-            $t->nullableMorphs('reference'); // related entity
+            // who did it
+            $t->string('actor_type')->nullable();
+            $t->string('actor_id')->nullable();
+            $t->index(['actor_type', 'actor_id']);
+
+            // what it happened to
+            $t->string('subject_type')->nullable();
+            $t->string('subject_id')->nullable();
+            $t->index(['subject_type', 'subject_id']);
+
+            // related entity
+            $t->string('reference_type')->nullable();
+            $t->string('reference_id')->nullable();
+            $t->index(['reference_type', 'reference_id']);
 
             $t->json('metadata')->nullable();  // NEVER store secrets/tokens here
             $t->string('ip', 45)->nullable();
